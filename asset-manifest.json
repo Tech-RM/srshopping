@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/srshopping/static/css/main.0818a29c.css",
+    "main.js": "/srshopping/static/js/main.9ea263ca.js",
+    "static/js/787.3a6ee18e.chunk.js": "/srshopping/static/js/787.3a6ee18e.chunk.js",
+    "index.html": "/srshopping/index.html",
+    "main.0818a29c.css.map": "/srshopping/static/css/main.0818a29c.css.map",
+    "main.9ea263ca.js.map": "/srshopping/static/js/main.9ea263ca.js.map",
+    "787.3a6ee18e.chunk.js.map": "/srshopping/static/js/787.3a6ee18e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0818a29c.css",
+    "static/js/main.9ea263ca.js"
+  ]
+}
