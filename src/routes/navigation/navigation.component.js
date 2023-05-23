@@ -13,7 +13,7 @@ const Navigation=()=>{
                 <div className="navigation-links-container">
 
                     <Link className="nav-link" to='/shop'>Shop Now</Link>
-                    <Link className="nav-link" to="/sign-in">Sign In</Link>
+                    <Link className="nav-link" to="/auth">Sign In</Link>
                 </div>
             </div>
             <div>
