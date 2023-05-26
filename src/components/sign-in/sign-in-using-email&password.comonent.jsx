@@ -2,6 +2,10 @@
 import { useState } from "react";
 import { signInUsingEmailAndPassword } from "../../utility/firebase/firebase.utility";
 import FormInput from "../form-input/form-input.component";
+import Button from "../button/button.component";
+import { SignInUsingPopup } from "./sign-in-using-google.component";
+
+import './sign-in-form.styles.scss';
 
 const initialState={
     "email":"",
@@ -20,12 +24,13 @@ const SIgnInUsingEmailAndPassword=()=>{
         const {name,value}=event.target;
         setFormFields({...formFields,[name]:value});
     }
+
+
     const handleSignInFormSubmit= async (event)=>{
         event.preventDefault();
         if(!email||!password)return;
         try{
-            const response= await signInUsingEmailAndPassword(email,password);
-            console.log("res",response);
+            await signInUsingEmailAndPassword(email,password);
 
         }catch(error){
             switch(error.code) {
@@ -44,7 +49,9 @@ const SIgnInUsingEmailAndPassword=()=>{
 
     }
     return(
-        <div>
+        <div className="sign-in-container">
+            <h2>Already have an account?</h2>
+            <span>Sign-In using your email and password</span>
             <form onSubmit={handleSignInFormSubmit}>
                 <FormInput 
                 label={"Email : "}
@@ -61,7 +68,10 @@ const SIgnInUsingEmailAndPassword=()=>{
                 value={password}
                 onChange={onInputChange}
                 required />
-                <button type="submit">Sign In</button>
+                <div className="space-between">
+                    <Button type="submit">Sign In</Button>
+                    <SignInUsingPopup/>
+                </div>
             </form>
         </div>
     )

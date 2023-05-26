@@ -9,7 +9,10 @@ import {
     signInWithEmailAndPassword,
     signInWithRedirect, 
     signInWithPopup,
-    GoogleAuthProvider} from "firebase/auth";
+    GoogleAuthProvider,
+    signOut,
+    onAuthStateChanged,
+        } from "firebase/auth";
 
 
     //firebase cloud firestore setup
@@ -46,6 +49,8 @@ export const db=getFirestore();//creating a firebase instance
 
 export const createUserDocumentFromUserAuth= async (userAuth,someOtherFields={})=>{
 
+    if(!userAuth) return;
+
     //to check an exissting instance of the document
     const userDocRef=doc(db,"users", userAuth.uid);//it creates an user docuent refrence.
     //to get the data related to the above documents
@@ -71,6 +76,11 @@ export const createUserDocumentUsingEmailAndPassword= async (email,password)=>{
 
 }
 export const signInUsingEmailAndPassword= async (email,password)=>{
+    if(!email||!password)return;
     return await signInWithEmailAndPassword(auth,email,password);
 
 }
+
+export const signOutUser=async ()=> await signOut(auth);
+
+export const onAuthStateChangedListner = (callback) => onAuthStateChanged (auth,callback);

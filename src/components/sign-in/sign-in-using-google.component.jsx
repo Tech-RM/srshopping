@@ -5,24 +5,17 @@ import {
     createUserDocumentFromUserAuth,
     signInWithGooglePopUp,
     signInWithGoogleRedirect} from "../../utility/firebase/firebase.utility";
+
+    import Button from "../button/button.component";
     
     //sign-in using google popup.
     export const SignInUsingPopup=()=>{
         const handleSignInUsingGooglePopup= async ()=>{
-            const response= await signInWithGooglePopUp();
-            if(response){
-                const userDocRef= await createUserDocumentFromUserAuth(response.user);
-                console.log("From SignInUsingGooglePopup",userDocRef);
-            }else{
-                console.log("Problem getting responce at signInWithGooglePopUp");
-                return;
-            }
-            
-            
+        await signInWithGooglePopUp();     
         }
         return(
             <div>
-                <button onClick={handleSignInUsingGooglePopup}>Google SignIn</button>
+                <Button type="button" buttonType='google' onClick={handleSignInUsingGooglePopup}>Google SignIn</Button>
             </div>
         )
     }
@@ -42,8 +35,7 @@ export const SignInUsingRedirect=()=>{
     
     return(
         <div>
-            <p>This is sign in page</p>
-            <button onClick={signInWithGoogleRedirect}>Sign In using Google Redirect</button>
+            <Button buttonType='google' onClick={signInWithGoogleRedirect}>Sign In using Google Redirect</Button>
         </div>
     )
 }
