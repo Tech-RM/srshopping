@@ -4,6 +4,8 @@ import { ReactComponent as Logosvg } from "../../assets/crown.svg";
 
 import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utility/firebase/firebase.utility";
+import CartIcon from "../../components/cart-icon/cart-icon.component";
+import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 
 import "./navigation.styles.scss";
 
@@ -24,11 +26,13 @@ const Navigation=()=>{
                     {currentUser? (<span className="nav-link" onClick={signOutUser}>Sign Out</span>)
                                 :(<Link className="nav-link" to="/auth">Sign In</Link>)
                     }
+                    <Link className="shopping-cart">
+                        <CartIcon/>
+                    </Link>
                 </div>
+                <CartDropdown/>
             </div>
-            <div>
                 <Outlet/>
-            </div>
         </Fragment>
     );
 }
