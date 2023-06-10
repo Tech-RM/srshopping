@@ -21,7 +21,12 @@ import {
     getFirestore,
     doc,
     getDoc,
-    setDoc} from "firebase/firestore";
+    setDoc,
+    collection,
+    writeBatch,
+    query,
+    getDocs
+            } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -46,6 +51,33 @@ export const signInWithGooglePopUp=()=>signInWithPopup(auth,googleProvider);
 export const signInWithGoogleRedirect=()=>signInWithRedirect(auth,googleProvider);
 
 export const db=getFirestore();//creating a firebase instance
+
+export const addCollectionandDocuments= async (collectionKey,objectsToAdd)=>{
+    const collectionRef=collection(db,collectionKey);
+
+    const batch=writeBatch(db);
+
+    objectsToAdd.forEach(object=>{
+        const objectRef=doc(collectionRef,object.title.toLowerCase());
+        batch.set(objectRef,object);
+    })
+
+    await batch.commit();
+    console.log('Updating done.');
+}
+
+export const getCollectionAndDocuments=async()=>{
+    const collectionRef=collection(db,'categories');
+    const q=query(collectionRef);
+    const querySnapshotDocs=(await getDocs(q)).docs;
+    const categoryMap=querySnapshotDocs.reduce((acc,docSnapshot)=>{
+        const {title,items}=docSnapshot.data();
+        return {...acc,[title.toLowerCase()]:items};
+        // acc([title.toLowerCase()])=items; // this two lines are original code from the video.
+        // return acc;
+    },{})
+    return categoryMap;
+}
 
 export const createUserDocumentFromUserAuth= async (userAuth,someOtherFields={})=>{
 
