@@ -46,8 +46,6 @@ margin: 0 7.5px 15px;
 overflow: hidden;
 
   &:hover {
-    cursor: pointer;
-
   ${BackgroundImage} {
       transform: scale(1.1);
       transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
