@@ -1,15 +1,16 @@
 
 import SignUpForm from "../../components/sign-up/sign-up-form.component";
 import SIgnInUsingEmailAndPassword from "../../components/sign-in/sign-in-using-email&password.comonent";
+import { AuthContainer } from "./authentication.styles";
 
-import './authentication.styles.scss';
+
 
 const AuthenticationRoute=()=>{
     return(
-        <div className="authentication-container">
+        <AuthContainer>
             <SIgnInUsingEmailAndPassword />
             <SignUpForm />
-        </div>
+        </AuthContainer>
     )
 }
 export default AuthenticationRoute;

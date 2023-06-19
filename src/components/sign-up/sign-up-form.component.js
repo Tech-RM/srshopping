@@ -7,8 +7,9 @@ import { createUserDocumentUsingEmailAndPassword,
 import FormInput from "../form-input/form-input.component";
 
 import Button from "../button/button.component";
+import { SignUpContainer, SignUpH2 } from "./sign-up-form.styles";
 
-import './sign-up-form.styles.scss';
+
 
 
 
@@ -59,8 +60,8 @@ const SignUpForm=()=>{
         }   
     }
     return(
-        <div className="sign-up-container">
-            <h2>Don't have an account?</h2>
+        <SignUpContainer>
+            <SignUpH2>Don't have an account?</SignUpH2>
             <span>Sign-Up using your email and password</span>
             <form onSubmit={handleSignUpFormSubmit}>
                 <FormInput onChange={onInputChange} label="Display Name " type="text" required name="displayName" value={displayName}/>
@@ -69,7 +70,7 @@ const SignUpForm=()=>{
                 <FormInput label="Confirm Password  " onChange={onInputChange} type="password" required name="confirmPassword" value={confirmPassword}/>
                 <Button type='submit'>Sign Up</Button>
             </form>
-        </div>
+        </SignUpContainer>
     )
 }
 export default SignUpForm;

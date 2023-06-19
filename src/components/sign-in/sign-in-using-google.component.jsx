@@ -6,7 +6,7 @@ import {
     signInWithGooglePopUp,
     signInWithGoogleRedirect} from "../../utility/firebase/firebase.utility";
 
-    import Button from "../button/button.component";
+    import Button,{BUTTON_TYPPE_CLASSES} from "../button/button.component";
     
     //sign-in using google popup.
     export const SignInUsingPopup=()=>{
@@ -14,9 +14,7 @@ import {
         await signInWithGooglePopUp();     
         }
         return(
-            <div>
-                <Button type="button" buttonType='google' onClick={handleSignInUsingGooglePopup}>Google SignIn</Button>
-            </div>
+                <Button type="button" buttonType={BUTTON_TYPPE_CLASSES.google} onClick={handleSignInUsingGooglePopup}>Google SignIn</Button>
         )
     }
     //sign-in using google redirect
@@ -35,7 +33,7 @@ export const SignInUsingRedirect=()=>{
     
     return(
         <div>
-            <Button buttonType='google' onClick={signInWithGoogleRedirect}>Sign In using Google Redirect</Button>
+            <Button buttonType={BUTTON_TYPPE_CLASSES.google} onClick={signInWithGoogleRedirect}>Sign In using Google Redirect</Button>
         </div>
     )
 }

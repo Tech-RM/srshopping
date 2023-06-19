@@ -5,7 +5,7 @@ import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 import { SignInUsingPopup } from "./sign-in-using-google.component";
 
-import './sign-in-form.styles.scss';
+import { Buttons, SignInContainer, SignInH2 } from "./sign-in-form.styles";
 
 const initialState={
     "email":"",
@@ -49,8 +49,8 @@ const SIgnInUsingEmailAndPassword=()=>{
 
     }
     return(
-        <div className="sign-in-container">
-            <h2>Already have an account?</h2>
+        <SignInContainer>
+            <SignInH2>Already have an account?</SignInH2>
             <span>Sign-In using your email and password</span>
             <form onSubmit={handleSignInFormSubmit}>
                 <FormInput 
@@ -68,12 +68,12 @@ const SIgnInUsingEmailAndPassword=()=>{
                 value={password}
                 onChange={onInputChange}
                 required />
-                <div className="space-between">
+                <Buttons>
                     <Button type="submit">Sign In</Button>
                     <SignInUsingPopup/>
-                </div>
+                </Buttons>
             </form>
-        </div>
+        </SignInContainer>
     )
 }
 
