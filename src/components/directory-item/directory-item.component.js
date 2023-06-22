@@ -8,7 +8,7 @@ const DirectoryItem=({category})=>{
   // const onNavigateHandler=()=>navigate(route);
     return(
         <DirectoryContainer>
-          <BackgroundImage imageUrl={imageUrl} />
+          <BackgroundImage imageurl={imageUrl} />
           {/* <DirectoryBodyContainer to={`shop/${title.toLowerCase()}`}> */}
           {/* <DirectoryBodyContainer onClick={onNavigateHandler}> -- this is not working..need to check*/}
           <DirectoryBodyContainer to={route}>

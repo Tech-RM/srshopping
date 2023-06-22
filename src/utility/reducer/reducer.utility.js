@@ -1,0 +1,1 @@
+export const createAction=(a,b)=>({type:a,payload:b});
