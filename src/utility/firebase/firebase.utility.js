@@ -69,14 +69,9 @@ export const addCollectionandDocuments= async (collectionKey,objectsToAdd)=>{
 export const getCollectionAndDocuments=async()=>{
     const collectionRef=collection(db,'categories');
     const q=query(collectionRef);
+
     const querySnapshotDocs=(await getDocs(q)).docs;
-    const categoryMap=querySnapshotDocs.reduce((acc,docSnapshot)=>{
-        const {title,items}=docSnapshot.data();
-        return {...acc,[title.toLowerCase()]:items};
-        // acc([title.toLowerCase()])=items; // this two lines are original code from the video.
-        // return acc;
-    },{})
-    return categoryMap;
+    return querySnapshotDocs.map(docSnapshot=>docSnapshot.data());
 }
 
 export const createUserDocumentFromUserAuth= async (userAuth,someOtherFields={})=>{
